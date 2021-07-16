@@ -2,8 +2,6 @@ EnglishPal - Learn English Words Smartly
 ==========================================
 
 
-
-
 Hui Lan <hui.lan@cantab.net>
 
 1 November 2019
@@ -27,7 +25,7 @@ python3 main.py
 Run it within Docker
 --------------------
 
-Assuming that docker has been installed ...
+Assuming that docker has been installed and that you are a sudoer ...
 
 ssh to ubuntu@118.25.96.118
 
@@ -85,19 +83,16 @@ pscp wordfreqapp.db lanhui@118.25.96.118:/home/lanhui/englishpal/app/static
 Feedback
 ---------
 
-Tianhua people
-~~~~~~~~~~~~~~~~
+
+Respondent 1 -- Tianhua
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Need a phone app.  I use phone a lot.  You cannot ask students to use computers.
 
 Can take a picture for text.  Automatic translation.
 
-
-
-Usability testing
-~~~~~~~~~~~~~~~~~~~~~~
-
-Respondent 1 --- Paid 10 yuan
+Respondent 2 --- Paid 10 yuan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 “成为会员”改成“注册”
 
@@ -109,7 +104,12 @@ Respondent 1 --- Paid 10 yuan
 
 需要有“上一篇”、“下一篇”
 
-Internal server error when register using an email address.
+TODO
+~~~~~
+
+Fix Bug: Internal server error when register using email address.
+
+Usability testing
 
 
 Improvements made by contributors
