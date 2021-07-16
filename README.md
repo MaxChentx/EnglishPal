@@ -72,9 +72,23 @@ Update articles
 ---------------
 
 All articles are stored in a SQLite file called
-app/static/wordfreqapp.db.  Create wordfreqapp.db using this command:
-`cat wordfreqapp.sql | sqlite3 wordfreqapp.db`.  Delete wordfreqapp.db
-first it if exists.
+`app/static/wordfreqapp.db`.
+
+Export wordfreqapp.db to wordfreqapp.sql using the following commands:
+
+- sqlite3 wordfreqapp.db
+
+- .output wordfreqapp.sql
+
+- .dump
+
+- .exit
+
+Put wordfreqapp.sql (not wordfreqapp.db) under version control.
+
+Create wordfreqapp.db using this command: `cat wordfreqapp.sql |
+sqlite3 wordfreqapp.db`.  Delete wordfreqapp.db first it if exists.
+
 
 pscp wordfreqapp.db lanhui@118.25.96.118:/home/lanhui/englishpal/app/static
 
