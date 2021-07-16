@@ -32,27 +32,27 @@ Assuming that docker has been installed ...
 ssh to ubuntu@118.25.96.118
 cd to /home/lanhui/englishpal
 
-## Stop all docker service
+\#  Stop all docker service
 sudo service docker restart
 
-## If you know the container ID, then the above comamnd is an overkill.  Use the following command instead.
+\#  If you know the container ID, then the above comamnd is an overkill.  Use the following command instead.
 sudo docker stop ContainerID
 
-## You could get all container ID with the following command.
+\#  You could get all container ID with the following command.
 sudo docker ps 
 
-## Rebuild container. Run this after modifying the source code.
+\#  Rebuild container. Run this after modifying the source code.
 sudo docker build -t englishpal .
 
-## Run the application
-sudo docker run -d -p 90:80 -v /home/lanhui/englishpal/app/static/frequency:/app/static/frequency -t englishpal  ## for permanently saving data
-sudo docker run -d -p 90:80 -t englishpal ## data will be lost after existing
+\#  Run the application
+sudo docker run -d -p 90:80 -v /home/lanhui/englishpal/app/static/frequency:/app/static/frequency -t englishpal  \#  for permanently saving data
+sudo docker run -d -p 90:80 -t englishpal \#  data will be lost after existing
 
-## Save space.  Run it after sudo docker run
+\#  Save space.  Run it after sudo docker run
 sudo docker system prune -a -f
 
 
-## Other commands
+\#  Other commands
 sudo docker ps -a
 
 sudo docker logs image_name, where image name could be obtained from sudo docker ps.
