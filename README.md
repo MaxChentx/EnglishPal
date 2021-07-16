@@ -84,15 +84,15 @@ Feedback
 ---------
 
 
-Respondent 1 -- Tianhua
-~~~~~~~~~~~~~~~~~~~~~~~~
+### Respondent 1 -- Tianhua
+
 
 Need a phone app.  I use phone a lot.  You cannot ask students to use computers.
 
 Can take a picture for text.  Automatic translation.
 
-Respondent 2 --- Paid 10 yuan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Respondent 2 --- Paid 10 yuan
+
 
 “成为会员”改成“注册”
 
@@ -104,8 +104,8 @@ Respondent 2 --- Paid 10 yuan
 
 需要有“上一篇”、“下一篇”
 
-TODO
-~~~~~
+### TODO
+
 
 Fix Bug: Internal server error when register using email address.
 
