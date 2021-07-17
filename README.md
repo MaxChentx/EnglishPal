@@ -71,8 +71,12 @@ build.sh contains all the above commands.  Run "sudo ./build.sh" to rebuild the 
 Update articles
 ---------------
 
-All articles are stored in a SQLite file called
+All articles are stored in the `article` table in a SQLite file called
 `app/static/wordfreqapp.db`.
+
+### Adding new articles
+
+To add articles, open and edit `app/static/wordfreqapp.db` using DB Browser for SQLite (https://sqlitebrowser.org).
 
 Export wordfreqapp.db to wordfreqapp.sql using the following commands:
 
@@ -86,9 +90,12 @@ Export wordfreqapp.db to wordfreqapp.sql using the following commands:
 
 Put wordfreqapp.sql (not wordfreqapp.db) under version control.
 
-Create wordfreqapp.db using this command: `cat wordfreqapp.sql |
-sqlite3 wordfreqapp.db`.  Delete wordfreqapp.db first it if exists.
+### Creating SQLite file from wordfreqapp.sql
 
+Create wordfreqapp.db using this command: `cat wordfreqapp.sql |
+sqlite3 wordfreqapp.db`.  Delete wordfreqapp.db first if it exists.
+
+### Uploading wordfreqapp.db
 
 pscp wordfreqapp.db lanhui@118.25.96.118:/home/lanhui/englishpal/app/static
 
