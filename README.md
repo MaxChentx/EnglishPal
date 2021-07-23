@@ -11,8 +11,7 @@ What is it?
 -----------------
 
 EnglishPal allows the user to build his list of new English words
-picked from articles selected for him according his vocabulary level
-by EnglishPal.
+picked from articles selected for him according his vocabulary level.
 
 
 Run it on a local machine
