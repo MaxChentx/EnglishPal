@@ -4,6 +4,7 @@ cd /home/lanhui/englishpal
 
 # Stop service
 sudo docker stop EnglishPal
+sudo docker rm EnglishPal
 
 # Rebuild container. Run this after modifying the source code.
 sudo docker build -t englishpal .
