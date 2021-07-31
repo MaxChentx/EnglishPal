@@ -110,7 +110,7 @@ def get_today_article(user_word_list, articleID):
                 d = reading
                 break
             
-    s = '<p><i>According to your word list, your level is <b>%4.2f</b> and we have chosen an article with a difficulty level of <b>%4.2f</b> for you.</i></p>' % (user_level, text_level)
+    s = '<div class="alert alert-success" role="alert">According to your word list, your level is <span class="badge bg-success">%4.2f</span>  and we have chosen an article with a difficulty level of <span class="badge bg-success">%4.2f</span> for you.</div>' % (user_level, text_level)
     s += '<p><b>%s</b></p>' % (d['date'])
     s += '<p><font size=+2>%s</font></p>' % (d['text'])
     s += '<p><i>%s</i></p>' % (d['source'])
@@ -230,6 +230,8 @@ def mainpage():
                <head>
                <meta charset="utf-8">
                <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />
+               <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
                  <title>EnglishPal 英文单词高效记</title>
 
                </head>
@@ -242,7 +244,7 @@ def mainpage():
             page += '<p><a href="/login">登录</a>  <a href="/signup">成为会员</a> <a href="/static/usr/instructions.html">使用说明</a></p>\n'
         #page += '<p><img src="%s" width="400px" alt="advertisement"/></p>' % (get_random_image(path_prefix + 'static/img/'))
         page += '<p><b>%s</b></p>' % (get_random_ads())
-        page += '<p>共有文章%d篇</b>' % (total_number_of_essays())
+        page += '<div class="alert alert-success" role="alert">共有文章 <span class="badge bg-success"> %d </span> 篇</div>' % (total_number_of_essays())
         page += '<p>粘帖1篇文章 (English only)</p>'
         page += '<form method="post" action="/">'
         page += ' <textarea name="content" rows="10" cols="120"></textarea><br/>'
@@ -257,6 +259,7 @@ def mainpage():
                     break
                 page += '<a href="%s">%s</a> %d\n' % (youdao_link(x[0]), x[0], x[1])
 
+        page += ' <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>'
         page += '</body></html>'
         return page
 
@@ -336,10 +339,11 @@ def userpage(username):
         page = '<meta charset="UTF8">\n'
         page += '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />\n'
         page += '<meta name="format-detection" content="telephone=no" />\n' # forbid treating numbers as cell numbers in smart phones
+        page += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">'
         page += '<title>EnglishPal Study Room for %s</title>' % (username)
         page += '<p><b>English Pal for <font color="red">%s</font></b> <a href="/logout">登出</a></p>' % (username)
-        page += '<p><a href="/%s/reset">下一篇</a></p>' % (username)
         page += '<p><b>阅读文章并回答问题</b></p>\n'
+        page += '<p><a class="btn btn-success" href="/%s/reset" role="button"> 下一篇 </a></p>' % (username)
         page += '<div id="text-content">%s</div>'  % (get_today_article(user_freq_record, session['articleID']))
         page += '<p><b>收集生词吧</b> （可以在正文中划词，也可以复制黏贴）</p>'
         page += '<form method="post" action="/%s">' % (username)
@@ -388,11 +392,12 @@ def userpage(username):
                     session['time'] = 0   # discard anchor
                 if isinstance(d[word], list): # d[word] is a list of dates
                     if freq > 1:
-                        page += '<p class="new-word"> <a href="%s">%s</a>(<a title="%s">%d</a>) <a href="%s/%s/familiar">熟悉</a> <a href="%s/%s/unfamiliar">不熟悉</a>  <a href="%s/%s/del">删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
+                        page += '<p class="new-word"> <a class="btn btn-light" href="%s" role="button">%s</a>(<a title="%s">%d</a>) <a class="btn btn-success" href="%s/%s/familiar" role="button">熟悉</a> <a class="btn btn-warning" href="%s/%s/unfamiliar" role="button">不熟悉</a>  <a class="btn btn-danger" href="%s/%s/del" role="button">删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
                     else:
-                        page += '<p class="new-word"> <a href="%s">%s</a>(<a title="%s">%d</a>) <a href="%s/%s/familiar">熟悉</a> <a href="%s/%s/unfamiliar">不熟悉</a>  <a href="%s/%s/del" >删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
+                        page += '<p class="new-word"> <a class="btn btn-light" href="%s" role="button">%s</a>(<a title="%s">%d</a>) <a class="btn btn-success" href="%s/%s/familiar" role="button">熟悉</a> <a class="btn btn-warning" href="%s/%s/unfamiliar" role="button">不熟悉</a>  <a class="btn btn-danger" href="%s/%s/del" role="button">删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
                 elif isinstance(d[word], int): # d[word] is a frequency. to migrate from old format.
                     page += '<a href="%s">%s</a>%d\n' % (youdao_link(word), word, freq)
+        page += '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>'
         return page
 
 ### Sign-up, login, logout ###
