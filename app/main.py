@@ -392,7 +392,7 @@ def userpage(username):
                     session['time'] = 0   # discard anchor
                 if isinstance(d[word], list): # d[word] is a list of dates
                     if freq > 1:
-                        page += '<p class="new-word"> <a href="%s">%s</a>(<a title="%s">%d</a>) <a href="%s/%s/familiar">熟悉</a> <a href="%s/%s/unfamiliar">不熟悉</a>  <a href="%s/%s/del">删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
+                        page += '<p class="new-word"> <a href="%s">%s</a>(<a title="%s">%d</a>) <a class="btn btn-success" href="%s/%s/familiar" role="button">熟悉</a> <a class="btn btn-warning" href="%s/%s/unfamiliar" role="button">不熟悉</a>  <a class="btn btn-danger" href="%s/%s/del" role="button">删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
                     else:
                         page += '<p class="new-word"> <a href="%s">%s</a>(<a title="%s">%d</a>) <a href="%s/%s/familiar">熟悉</a> <a href="%s/%s/unfamiliar">不熟悉</a>  <a href="%s/%s/del" >删除</a> </p>\n' % (youdao_link(word), word, '; '.join(d[word]), freq,username, word,username,word, username,word)
                 elif isinstance(d[word], int): # d[word] is a frequency. to migrate from old format.
