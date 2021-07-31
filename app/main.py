@@ -230,6 +230,8 @@ def mainpage():
                <head>
                <meta charset="utf-8">
                <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />
+               <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
                  <title>EnglishPal 英文单词高效记</title>
 
                </head>
@@ -242,7 +244,7 @@ def mainpage():
             page += '<p><a href="/login">登录</a>  <a href="/signup">成为会员</a> <a href="/static/usr/instructions.html">使用说明</a></p>\n'
         #page += '<p><img src="%s" width="400px" alt="advertisement"/></p>' % (get_random_image(path_prefix + 'static/img/'))
         page += '<p><b>%s</b></p>' % (get_random_ads())
-        page += '<p>共有文章%d篇</b>' % (total_number_of_essays())
+        page += '<div class="alert alert-success" role="alert">共有文章 <span class="badge bg-success"> %d </span> 篇</div>' % (total_number_of_essays())
         page += '<p>粘帖1篇文章 (English only)</p>'
         page += '<form method="post" action="/">'
         page += ' <textarea name="content" rows="10" cols="120"></textarea><br/>'
@@ -257,6 +259,7 @@ def mainpage():
                     break
                 page += '<a href="%s">%s</a> %d\n' % (youdao_link(x[0]), x[0], x[1])
 
+        page += ' <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>'
         page += '</body></html>'
         return page
 
