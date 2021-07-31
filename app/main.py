@@ -340,8 +340,8 @@ def userpage(username):
         page += '<title>EnglishPal Study Room for %s</title>' % (username)
         page += '<p><b>English Pal for <font color="red">%s</font></b> <a href="/logout">登出</a></p>' % (username)
         page += '<p><a href="/%s/reset">下一篇</a></p>' % (username)
-        page += '<p><b>阅读文章并回答问题</b></p>\n'
         page += '<div id="text-content">%s</div>'  % (get_today_article(user_freq_record, session['articleID']))
+        page += '<p><b>阅读文章并回答问题</b></p>\n'        
         page += '<p><b>收集生词吧</b> （可以在正文中划词，也可以复制黏贴）</p>'
         page += '<form method="post" action="/%s">' % (username)
         page += ' <textarea name="content" id="selected-words" rows="10" cols="120"></textarea><br/>'
