@@ -250,6 +250,7 @@ def mainpage():
                </head>
                <body>
         '''
+        page += '<div class="container-fluid">'
         page += '<p><b><font size="+3" color="red">English Pal - Learn English smartly!</font></b></p>'
         if session.get('logged_in'):
             page += ' <a href="%s">%s</a></p>\n' % (session['username'], session['username'])
@@ -273,6 +274,7 @@ def mainpage():
                 page += '<a href="%s">%s</a> %d\n' % (youdao_link(x[0]), x[0], x[1])
 
         page += ' <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>'
+        page += '</div>'
         page += '</body></html>'
         return page
 
