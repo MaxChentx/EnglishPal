@@ -111,7 +111,7 @@ def get_today_article(user_word_list, articleID):
                 break
             
     s = '<div class="alert alert-success" role="alert">According to your word list, your level is <span class="badge bg-success">%4.2f</span>  and we have chosen an article with a difficulty level of <span class="badge bg-success">%4.2f</span> for you.</div>' % (user_level, text_level)
-    s += '<p><b>Article added on: %s</b></p>' % (d['date'])
+    s += '<p class="text-muted">Article added on: %s</p>' % (d['date'])
     s += '<div class="p-3 mb-2 bg-light text-dark">'
     s += '<p><font size=+2>%s</font></p>' % (d['text'])
     s += '<p><i>%s</i></p>' % (d['source'])
