@@ -86,8 +86,9 @@ def get_article_title(s):
 
 
 def get_article_body(s):
-    return '\n'.join(s.split('\n')[1:-1]) # remove the first line
-
+    lst = s.split('\n')
+    lst.pop(0) # remove the first line
+    return '\n'.join(lst) 
 
 def get_today_article(user_word_list, articleID):
 
