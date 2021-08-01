@@ -125,7 +125,7 @@ def get_today_article(user_word_list, articleID):
     article_body = get_article_body(d['text'])
     s += '<p class="display-3">%s</p>' % (article_title)
     s += '<p class="lead">%s</p>' % (article_body)
-    s += '<p><i>%s</i></p>' % (d['source'])
+    s += '<p><small class="text-muted">%s</small></p>' % (d['source'])
     s += '<p><b>%s</b></p>' % (get_question_part(d['question']))
     s = s.replace('\n', '<br/>')    
     s += '%s' % (get_answer_part(d['question']))
