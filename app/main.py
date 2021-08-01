@@ -81,6 +81,14 @@ def within_range(x, y, r):
     return x > y and abs(x - y) <= r 
 
 
+def get_article_title(s):
+    return s.split('\n')[0]
+
+
+def get_article_body(s):
+    return '\n'.join(s.split('\n')[1:-1]) # remove the first line
+
+
 def get_today_article(user_word_list, articleID):
 
     rq = RecordQuery(path_prefix + 'static/wordfreqapp.db')
@@ -113,7 +121,10 @@ def get_today_article(user_word_list, articleID):
     s = '<div class="alert alert-success" role="alert">According to your word list, your level is <span class="badge bg-success">%4.2f</span>  and we have chosen an article with a difficulty level of <span class="badge bg-success">%4.2f</span> for you.</div>' % (user_level, text_level)
     s += '<p class="text-muted">Article added on: %s</p>' % (d['date'])
     s += '<div class="p-3 mb-2 bg-light text-dark">'
-    s += '<p><font size=+2>%s</font></p>' % (d['text'])
+    article_title = get_article_title(d['text'])
+    article_body = get_article_body(d['text'])
+    s += '<p class="display-3">%s</p>' % (article_title)
+    s += '<p class="lead">%s</p>' % (article_body)
     s += '<p><i>%s</i></p>' % (d['source'])
     s += '<p><b>%s</b></p>' % (get_question_part(d['question']))
     s = s.replace('\n', '<br/>')    
