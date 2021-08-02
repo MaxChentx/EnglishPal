@@ -13,7 +13,7 @@ import pickle_idea, pickle_idea2
 import os
 import random, glob
 from datetime import datetime
-from flask import Flask, request, redirect, render_template, url_for, session, abort, flash
+from flask import Flask, request, redirect, render_template, url_for, session, abort, flash, get_flashed_messages
 from difficulty import get_difficulty_level, text_difficulty_level, user_difficulty_level
 
 app = Flask(__name__)
@@ -192,6 +192,15 @@ def get_answer_part(s):
     return html_code
 
 
+def get_flashed_messages_if_any():
+    messages = get_flashed_messages()
+    s = ''
+    for message in messages:
+        s += '<div class="alert alert-warning" role="alert">'
+        s += f'Congratulations! {message}'
+        s += '</div>'
+    return s
+
 
 @app.route("/<username>/reset", methods=['GET', 'POST'])
 def user_reset(username):
@@ -317,6 +326,7 @@ def familiar(username,word):
 def deleteword(username,word):
     user_freq_record = path_prefix + 'static/frequency/' + 'frequency_%s.pickle' % (username)
     pickle_idea2.deleteRecord(user_freq_record,word)
+    flash(f'<strong>{word}</strong> is no longer in your word list.')
     return redirect(url_for('userpage', username=username))
 
 @app.route("/<username>", methods=['GET', 'POST'])
@@ -359,6 +369,7 @@ def userpage(username):
         page += '<title>EnglishPal Study Room for %s</title>' % (username)
         page += '<div class="container-fluid">'
         page += '<p><b>English Pal for <font color="red">%s</font></b> <a class="btn btn-secondary" href="/logout" role="button">登出</a></p>' % (username)
+        page += get_flashed_messages_if_any()
         page += '<p><b>阅读文章并回答问题</b></p>\n'
         page += '<p><a class="btn btn-success" href="/%s/reset" role="button"> 下一篇 Next Article </a></p>' % (username)
         page += '<div id="text-content">%s</div>'  % (get_today_article(user_freq_record, session['articleID']))
