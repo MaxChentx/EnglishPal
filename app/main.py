@@ -196,9 +196,12 @@ def get_flashed_messages_if_any():
     messages = get_flashed_messages()
     s = ''
     for message in messages:
-        s += '<div class="alert alert-warning" role="alert">'
+        s += '<div class="alert alert-warning alert-dismissible fade show" role="alert">'
         s += '<h4 class="alert-heading">Congratulations</h4>'
         s += f'{message}'
+        s += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        s += '  <span aria-hidden="true">&times;</span>'
+        s += '</button>'
         s += '</div>'
     return s
 
