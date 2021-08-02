@@ -194,12 +194,12 @@ def get_answer_part(s):
 
 def get_flashed_messages_if_any():
     messages = get_flashed_messages()
-    if messages == []:
-        return ''
-    s = '<ul class=flashes>'
+    s = ''
     for message in messages:
-        s += f'<li>{message}</li>'
-    return s + '</ul>'
+        s += '<div class="alert alert-warning" role="alert">'
+        s += f'{message}'
+        s += '</div>'
+    return s
 
 
 @app.route("/<username>/reset", methods=['GET', 'POST'])
