@@ -197,6 +197,7 @@ def get_flashed_messages_if_any():
     s = ''
     for message in messages:
         s += '<div class="alert alert-warning" role="alert">'
+        s += '<h4 class="alert-heading">Congratulations</h4>'
         s += f'{message}'
         s += '</div>'
     return s
@@ -326,7 +327,7 @@ def familiar(username,word):
 def deleteword(username,word):
     user_freq_record = path_prefix + 'static/frequency/' + 'frequency_%s.pickle' % (username)
     pickle_idea2.deleteRecord(user_freq_record,word)
-    flash(f'Congratulations! <strong>{word}</strong> is no longer in your word list.')
+    flash(f'<strong>{word}</strong> is no longer in your word list.')
     return redirect(url_for('userpage', username=username))
 
 @app.route("/<username>", methods=['GET', 'POST'])
