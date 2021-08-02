@@ -198,7 +198,7 @@ def get_flashed_messages_if_any():
         return ''
     s = '<ul class=flashes>'
     for message in messages:
-        s += 'f<li>{message}</li>'
+        s += f'<li>{message}</li>'
     return s + '</ul>'
 
 
