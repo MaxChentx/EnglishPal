@@ -115,7 +115,7 @@ def get_today_article(user_word_list, articleID):
         for reading in result:
             text_level = text_difficulty_level(reading['text'], d3)
             #print('TEXT_LEVEL %4.2f' % (text_level))
-            if within_range(text_level, user_level, 0.5):
+            if within_range(text_level, user_level, (8.0 - user_level)*0.1):
                 d = reading
                 break
             
