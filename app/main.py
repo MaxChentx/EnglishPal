@@ -115,7 +115,8 @@ def get_today_article(user_word_list, articleID):
     if articleID == None:
         for reading in result:
             text_level = text_difficulty_level(reading['text'], d3)
-            if within_range(text_level, user_level, (8.0 - user_level)*0.8):
+            factor = random.gauss(0.8, 0.1) # a number drawn from Gaussian distribution with a mean of 0.8 and a stand deviation of 1
+            if within_range(text_level, user_level, (8.0 - user_level)*factor):
                 d = reading
                 break
             
