@@ -453,6 +453,7 @@ def signup():
                 session[username] = username
                 session['username'] = username
                 session['expiry_date'] = get_expiry_date(username)
+                session['articleID'] = None
                 return '<p>恭喜，你已成功注册， 你的用户名是 <a href="%s">%s</a>。</p>\
                 <p><a href="/%s">开始使用</a> <a href="/">返回首页</a><p/>' % (username, username, username)
             else:
