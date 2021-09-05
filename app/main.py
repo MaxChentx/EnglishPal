@@ -452,6 +452,7 @@ def signup():
                 session['logged_in'] = True
                 session[username] = username
                 session['username'] = username
+                session['expiry_date'] = get_expiry_date(username)
                 return '<p>恭喜，你已成功注册， 你的用户名是 <a href="%s">%s</a>。</p>\
                 <p><a href="/%s">开始使用</a> <a href="/">返回首页</a><p/>' % (username, username, username)
             else:
@@ -494,4 +495,3 @@ if __name__ == '__main__':
     app.run(debug=True)        
     #app.run(debug=True, port='6000')
     #app.run(host='0.0.0.0', debug=True, port='6000')
-
