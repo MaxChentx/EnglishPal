@@ -99,6 +99,7 @@ def get_today_article(user_word_list, articleID):
         rq.instructions('SELECT * FROM article WHERE article_id=%d' % (articleID))
     rq.do()
     result = rq.get_results()
+    random.shuffle(result)
     
     # Choose article according to reader's level
     d1 = load_freq_history(path_prefix + 'static/frequency/frequency.p')
@@ -114,8 +115,8 @@ def get_today_article(user_word_list, articleID):
     if articleID == None:
         for reading in result:
             text_level = text_difficulty_level(reading['text'], d3)
-            #print('TEXT_LEVEL %4.2f' % (text_level))
-            if within_range(text_level, user_level, 0.5):
+            factor = random.gauss(0.8, 0.1) # a number drawn from Gaussian distribution with a mean of 0.8 and a stand deviation of 1
+            if within_range(text_level, user_level, (8.0 - user_level)*factor):
                 d = reading
                 break
             

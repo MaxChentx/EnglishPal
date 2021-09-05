@@ -10,7 +10,7 @@ sudo docker rm EnglishPal
 sudo docker build -t englishpal .
 
 # Run the application
-sudo docker run -d --name EnglishPal -p 90:80 -v /home/lanhui/englishpal/app/static/frequency:/app/static/frequency -t englishpal  # for permanently saving data
+sudo docker run -d --name EnglishPal -p 90:80 -v /home/lanhui/englishpal/app/static/frequency:/app/static/frequency -v /home/lanhui/englishpal/app/static/:/app/static/ -t englishpal  # for permanently saving data
 
 # Save space.  Run it after sudo docker run
 sudo docker system prune -a -f
