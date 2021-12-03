@@ -12,7 +12,7 @@ import random, string, time
 @pytest.mark.usefixtures
 def test_next(URL, driver):
     try:
-        driver.get(HOME_PAGE)
+        driver.get(URL)
         assert 'English Pal -' in driver.page_source
     
         # login
