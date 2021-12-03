@@ -6,19 +6,18 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 import random, time
 import string
+import pytest
 
-driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
-driver.implicitly_wait(10)
-
-HOME_PAGE = 'http://121.4.94.30:91/'
-
+#driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
+#driver.implicitly_wait(10)
 
 def has_punctuation(s):
     return [c for c in s if c in string.punctuation] != []
-    
-def test_add_word():
+
+@pytest.mark.usefixtures
+def test_add_word(URL, driver):
     try:
-        driver.get(HOME_PAGE)
+        driver.get(URL)
         assert 'English Pal -' in driver.page_source
     
         # login

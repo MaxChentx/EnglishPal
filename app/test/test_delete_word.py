@@ -3,25 +3,22 @@
 # docker run -d -p 4444:4444 selenium/standalone-chrome
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
+import pytest
 import random, time
 import string
 
 # 调用本地chromedriver
 # driver = webdriver.Chrome(executable_path="D:\ChromeDriver\chromedriver.exe")
 # driver.get("http://127.0.0.1:5000/")
-driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
-driver.implicitly_wait(10)
+#driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
+#driver.implicitly_wait(10)
 # driver.maximize_window()
 # HOME_PAGE = "http://127.0.0.1:5000/"
 
-
-HOME_PAGE = 'http://121.4.94.30:91/'
-
-
+@pytest.mark.usefixtures
 def test_delete_word():
     try:
-        driver.get(HOME_PAGE)
+        driver.get(URL)
         assert 'English Pal -' in driver.page_source
         # login
         elem = driver.find_element_by_link_text('登录')
@@ -58,4 +55,3 @@ def test_delete_word():
     finally:
         driver.quit()
 
-# test_delete_word()

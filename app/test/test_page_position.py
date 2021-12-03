@@ -6,14 +6,9 @@ Click the Familiar or Unfamiliar button (current word frequency is 1), and the p
 from random import randint
 
 from selenium import webdriver
+import pytest
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
-driver.implicitly_wait(10)
-
-HOME_PAGE = 'http://121.4.94.30:91/'
-
 
 def click_by_random(text):
     elements = driver.find_elements_by_link_text(text)  # 点击单词表中的第一个单词的熟悉按钮
@@ -33,10 +28,10 @@ def get_scrollTop():
     roll_height = driver.execute_script(js)
     return roll_height
 
-
-def test_page_position():
+@pytest.mark.usefixtures
+def test_page_position(URL, driver):
     try:
-        driver.get(HOME_PAGE)
+        driver.get(URL)
         # login
         driver.find_element_by_link_text('登录').click()
 
