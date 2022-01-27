@@ -2,10 +2,10 @@
     <body>
     <form action="/reset" method='POST'>
         旧密码:
-        <input type="password" name="old-psd" />
+        <input type="password" name="old-password" />
         <br/>
         新密码:
-        <input type="password" name="new-psd" />
+        <input type="password" name="new-password" />
         <br/>
         <input type="submit" name="submit" value="提交" />
         <input type="button" name="submit" value="放弃修改" onclick="window.location.href='/{{ username }}'"/>

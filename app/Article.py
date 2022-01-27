@@ -49,8 +49,7 @@ def get_today_article(user_word_list, articleID):
 
     d = {}
     d_user = load_freq_history(user_word_list)
-    user_level = user_difficulty_level(d_user,
-                                       d3)  # more consideration as user's behaviour is dynamic. Time factor should be considered.
+    user_level = user_difficulty_level(d_user, d3)  # more consideration as user's behaviour is dynamic. Time factor should be considered.
     random.shuffle(result)  # shuffle list
     d = random.choice(result)
     text_level = text_difficulty_level(d['text'], d3)
@@ -128,7 +127,7 @@ def get_answer_part(s):
        else
           e.style.display = 'block';
     }
-</script>   
+</script>
     '''
     html_code = js
     html_code += '\n'
