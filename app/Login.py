@@ -22,7 +22,7 @@ def add_user(username, password):
     # 将用户名和密码一起加密，以免暴露不同用户的相同密码
     password = md5(username + password)
     rq = InsertQuery(path_prefix + 'static/wordfreqapp.db')
-    rq.instructions("INSERT INTO user Values ('%s', '%s', '%s', '%s')" % (username, password, start_date, expiry_date))
+    rq.instructions("INSERT INTO user VALUES ('%s', '%s', '%s', '%s')" % (username, password, start_date, expiry_date))
     rq.do()
 
 
@@ -63,15 +63,11 @@ def get_expiry_date(username):
         return '20191024'
 
 
-def md5(str):
+def md5(s):
     '''
     MD5摘要
     :param str: 字符串
     :return: 经MD5以后的字符串
     '''
-    # 当前MD5已被关闭，若要开启需删除下面两行
-    print("MD5尚未开启")
-    return str
-    # 当前MD5已被关闭，若要开启需删除上面两行
-    h = hashlib.md5(str.encode(encoding='utf-8'))
+    h = hashlib.md5(s.encode(encoding='utf-8'))
     return h.hexdigest()
