@@ -3,16 +3,17 @@
 # docker run -d -p 4444:4444 selenium/standalone-chrome
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import pytest
+
 import random, string
 
-#driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
-#driver.implicitly_wait(10)
+driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
+driver.implicitly_wait(10)
 
-@pytest.mark.usefixtures
+HOME_PAGE = 'http://121.4.94.30:91/'
+
 def test_login_security_fix():
     try:
-        driver.get(URL)
+        driver.get(HOME_PAGE)
         
         elem = driver.find_element_by_link_text('登录')
         elem.click()

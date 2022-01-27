@@ -3,19 +3,19 @@
 # docker run -d -p 4444:4444 selenium/standalone-chrome
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import pytest
+
 import random, string
 
-#driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
-#driver.implicitly_wait(10)
+driver = webdriver.Remote('http://localhost:4444/wd/hub', DesiredCapabilities.FIREFOX)
+driver.implicitly_wait(10)
+
+HOME_PAGE = 'http://121.4.94.30:91/'
 
 
 
-
-@pytest.mark.usefixtures
-def test_signup(URL, driver):
+def test_signup():
     try:
-        driver.get(URL)
+        driver.get(HOME_PAGE)
         driver.save_screenshot('test_signup_pic0.png')
         
         assert 'English Pal -' in driver.page_source
