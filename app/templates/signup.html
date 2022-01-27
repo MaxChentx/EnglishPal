@@ -10,8 +10,8 @@ You're logged in already! <a href="/logout">Logout</a>.
 <p>Sign up here.</p>
 
 <form action="/signup" method="POST">
-  <p><input type="username" name="username" placeholder="邮箱地址、电话号码"></p>
-  <p><input type="password" name="password" placeholder="密码"></p>  
+  <p><input type="username" name="username" placeholder="邮箱地址、电话号码" required="required"></p>
+  <p><input type="password" name="password" placeholder="密码"></p>
   <p><input type="submit" value="注册"></p>
 </form>
 {% endif %}
