@@ -36,7 +36,7 @@
             <input type="reset" value="清除"/>
         </form>
         {% if d_len > 0 %}
-            <p><b>最常见的词()</b></p>
+            <p><b>最常见的词</b></p>
             {% for x in lst if x[1]>99 %}
                 <a href="http://youdao.com/w/eng/{{x[0]}}/#keyfrom=dict2.index">{{x[0]}}</a> {{x[1]}}
             {% endfor %}
