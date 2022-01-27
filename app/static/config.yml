@@ -2,8 +2,6 @@
 css:
   item:
     - static/css/bootstrap.css
-    # - static/css/aplayercss.css
-    # - static/css/custom.css
 
 # 全局引入的js文件地址
 js:
