@@ -17,8 +17,8 @@ def signup():
         return render_template('signup.html')
     elif request.method == 'POST':
         # POST方法需判断是否注册成功，再根据结果返回不同的内容
-        username = request.form['username']
-        password = request.form['password']
+        username = escape(request.form['username'])
+        password = escape(request.form['password'])
 
         available = check_username_availability(username)
         if not available: # 用户名不可用
@@ -60,8 +60,8 @@ def login():
     elif request.method == 'POST':
         # POST方法用于判断登录是否成功
         # check database and verify user
-        username = request.form['username']
-        password = request.form['password']
+        username = escape(request.form['username'])
+        password = escape(request.form['password'])
         verified = verify_user(username, password)
         if verified:
             # 登录成功，写入session
@@ -104,15 +104,15 @@ def reset():
         return render_template('reset.html', username=session['username'], state='wait')
     else:
         # POST请求用于提交修改后信息
-        old_psd = request.form['old-psd']
-        new_psd = request.form['new-psd']
-        flag = change_password(username, old_psd, new_psd) # flag表示是否修改成功
+        old_password = escape(request.form['old-password'])
+        new_password = escape(request.form['new-password'])
+        flag = change_password(username, old_password, new_password) # flag表示是否修改成功
         if flag:
             session['logged_in'] = False
             return \
 '''
 <script>
-alert('修改密码成功!!!请重新登录');
+alert('密码修改成功，请重新登录。');
 window.location.href="/login";
 </script>
 
@@ -122,7 +122,7 @@ window.location.href="/login";
             return \
 '''
 <script>
-alert('修改密码失败!!!');
+alert('密码修改失败');
 window.location.href="/reset";
 </script>
 
