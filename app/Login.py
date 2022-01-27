@@ -34,18 +34,18 @@ def check_username_availability(username):
     return result == []
 
 
-def change_password(username, old_psd, new_psd):
+def change_password(username, old_password, new_password):
     '''
     修改密码
     :param username: 用户名
-    :param old_psd: 旧的密码
-    :param new_psd: 新密码
+    :param old_password: 旧的密码
+    :param new_password: 新密码
     :return: 修改成功:True 否则:False
     '''
-    if not verify_user(username, old_psd):  # 旧密码错误
+    if not verify_user(username, old_password):  # 旧密码错误
         return False
     # 将用户名和密码一起加密，以免暴露不同用户的相同密码
-    password = md5(username + new_psd)
+    password = md5(username + new_password)
     rq = InsertQuery(path_prefix + 'static/wordfreqapp.db')
     rq.instructions("UPDATE user SET password = '%s' WHERE name = '%s'" % (password, username))
     rq.do()
