@@ -43,7 +43,7 @@ My steps for deploying English on the server.
 
 - Rebuild container. Run the following command to rebuild a docker image after the code gets updated: `sudo docker build -t englishpal .`
 
-- Run the application: `sudo docker run -d -p 90:80 -v /home/lanhui/englishpal/app/static/frequency:/app/static/frequency -t englishpal`. If you use `sudo docker run -d -p 90:80 -t englishpal`, data will be lost after terminating the program.
+- Run the application: `sudo docker run -d -p 90:80 -v /home/lanhui/englishpal2/EnglishPal/app/static/frequency:/app/static/frequency -t englishpal`. If you use `sudo docker run -d -p 90:80 -t englishpal`, data will be lost after terminating the program.
 
 - Save space: `sudo docker system prune -a -f`
 
