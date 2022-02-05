@@ -37,7 +37,7 @@ My steps for deploying English on the server.
 
 - ssh to ubuntu@118.*.*.118
 
-- cd to /home/lanhui/englishpal
+- cd to /home/lanhui/englishpal2/EnglishPal
 
 - Stop all docker service: `sudo service docker restart`.  If you know the docker container ID, then the above command is an overkill.  Use the following command instead: `sudo docker stop ContainerID`.  You could get all container IDs with the following command: `sudo docker ps`
 
