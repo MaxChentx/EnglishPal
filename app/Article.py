@@ -68,7 +68,7 @@ def get_today_article(user_word_list, articleID):
     s += '<div class="p-3 mb-2 bg-light text-dark">'
     article_title = get_article_title(d['text'])
     article_body = get_article_body(d['text'])
-    s += '<p class="display-3">%s</p>' % (article_title)
+    s += '<p class="display-5">%s</p>' % (article_title)
     s += '<p class="lead"><font id="article" size=2>%s</font></p>' % (article_body)
     s += '<p><small class="text-muted">%s</small></p>' % (d['source'])
     s += '<p><b>%s</b></p>' % (get_question_part(d['question']))
