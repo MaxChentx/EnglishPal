@@ -5,6 +5,10 @@ from UseSqlite import InsertQuery, RecordQuery
 path_prefix = '/var/www/wordfreq/wordfreq/'
 path_prefix = './'  # comment this line in deployment
 
+def verify_pass(newpass,oldpass):
+    if(newpass==oldpass):
+        return True
+
 
 def verify_user(username, password):
     rq = RecordQuery(path_prefix + 'static/wordfreqapp.db')
@@ -47,6 +51,8 @@ def change_password(username, old_password, new_password):
     if not verify_user(username, old_password):  # 旧密码错误
         return False
     # 将用户名和密码一起加密，以免暴露不同用户的相同密码
+    if verify_pass(new_password,old_password): #新旧密码一致
+        return False
     password = md5(username + new_password)
     rq = InsertQuery(path_prefix + 'static/wordfreqapp.db')
     rq.instructions_with_parameters("UPDATE user SET password=:password WHERE name=:username", dict(
