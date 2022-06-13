@@ -29,9 +29,10 @@ function highLight() {
     if (sel_word1 != null) {
         var list = sel_word1.value.split(" ");
         for (var i = 0; i < list.length; ++i) {
-            list[i] = list[i].replace(/(^\s*)|(\s*$)/g, "");
+            list[i] = list[i].replace(/(^\s*)|(\s*$)/g, "");//消除字符串两边空字符
             if (list[i] != "" && "<mark>".indexOf(list[i]) == -1 && "</mark>".indexOf(list[i]) == -1) {
-                txt = txt.replace(new RegExp(list[i], "g"), "<mark>" + list[i] + "</mark>");
+
+                txt = txt.replace(new RegExp("\\s"+list[i]+"\\s", "g"), " <mark>" + list[i] + "</mark> ");
             }
         }
     }
@@ -40,7 +41,7 @@ function highLight() {
         for (var i = 0; i < list2.length; ++i) {
             list2[i] = list2[i].replace(/(^\s*)|(\s*$)/g, "");
             if (list2[i] != "" && "<mark>".indexOf(list2[i]) == -1 && "</mark>".indexOf(list2[i]) == -1) {
-                txt = txt.replace(new RegExp(list2[i], "g"), "<mark>" + list2[i] + "</mark>");
+                txt = txt.replace(new RegExp("\\s"+list2[i]+"\\s", "g"), " <mark>" + list2[i] + "</mark> ");
             }
         }
     }
