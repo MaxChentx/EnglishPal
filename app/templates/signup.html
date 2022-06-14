@@ -8,20 +8,6 @@ You're logged in already! <a href="/logout">Logout</a>.
 <p>{{ get_flashed_messages()[0] | safe }}</p>
 
 <style>
-  .bg{
-    background: url(../static/img/bg.jpg);
-    background-repeat:no-repeat;
-    background-size :cover ;
-    filter: blur(7px);
-    position: absolute;
-    top: -30px;
-    left: -30px;
-    z-index: -1;
-    width: calc(100vw + 60px);
-    height: calc(100vh + 60px);  
-    overflow: hidden; 
-}
-
 
 .container{
         background-color: #FFFFFF;
@@ -131,8 +117,6 @@ h1{
 
 </style>
 
-
-  <section class="bg"></section>
   <div class="container">
   <section class="signin-heading">
       <h1>Sign Up</h1>
