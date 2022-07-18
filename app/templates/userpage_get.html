@@ -35,7 +35,14 @@
     <input type="checkbox" onclick="ChangeHighlight()" checked/>生词高亮
     <input type="checkbox" onclick="onReadClick()" checked/>大声朗读
     <input type="checkbox" onclick="onChooseClick()" checked/>划词入库
-
+    <div class="range">
+        <div class="field">
+            <div class="sliderValue">
+                <span id="rangeValue">1×</span>
+            </div>
+        <input type="range" id="rangeComponent" min="0.5" max="2" value="1" step="0.25" "/>
+        </div>
+    </div>    
     <p><b>收集生词吧</b> （可以在正文中划词，也可以复制黏贴）</p>
     <form method="post" action="/{{ username }}">
         <textarea name="content" id="selected-words" rows="10" cols="120"></textarea><br/>
