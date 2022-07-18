@@ -48,7 +48,7 @@ def unfamiliar(username, word):
     pickle_idea.unfamiliar(user_freq_record, word)
     session['thisWord'] = word  # 1. put a word into session
     session['time'] = 1
-    return redirect(url_for('user_bp.userpage', username=username))
+    return "success"
 
 
 @userService.route("/<username>/<word>/familiar", methods=['GET', 'POST'])
@@ -63,7 +63,7 @@ def familiar(username, word):
     pickle_idea.familiar(user_freq_record, word)
     session['thisWord'] = word  # 1. put a word into session
     session['time'] = 1
-    return redirect(url_for('user_bp.userpage', username=username))
+    return "success"
 
 
 @userService.route("/<username>/<word>/del", methods=['GET', 'POST'])
@@ -77,7 +77,7 @@ def deleteword(username, word):
     user_freq_record = path_prefix + 'static/frequency/' + 'frequency_%s.pickle' % (username)
     pickle_idea2.deleteRecord(user_freq_record, word)
     flash(f'<strong>{word}</strong> is no longer in your word list.')
-    return redirect(url_for('user_bp.userpage', username=username))
+    return "success"
 
 
 @userService.route("/<username>", methods=['GET', 'POST'])
