@@ -68,13 +68,13 @@
             {% if session.get('thisWord') == x[0] and session.get('time') == 1 %}
                 <a name="aaa"></a>
             {% endif %}
-            <p id='p_{{ loop.index0 }}' class="new-word" >
-                <a id="word_{{ loop.index0 }}"  class="btn btn-light" href='http://youdao.com/w/eng/{{ word }}/#keyfrom=dict2.index'
+            <p id='p_{{ word }}' class="new-word" >
+                <a id="word_{{ word }}"  class="btn btn-light" href='http://youdao.com/w/eng/{{ word }}/#keyfrom=dict2.index'
                    role="button">{{ word }}</a>
-                ( <a id="freq_{{ loop.index0 }}" title="{{ word }}">{{ freq }}</a> )
-                <a class="btn btn-success" onclick="familiar({{ loop.index0 }})" role="button">熟悉</a>
-                <a class="btn btn-warning" onclick="unfamiliar({{ loop.index0 }})" role="button">不熟悉</a>
-                <a class="btn btn-danger" onclick="delete_word({{ loop.index0 }})" role="button">删除</a>
+                ( <a id="freq_{{ word }}" title="{{ word }}">{{ freq }}</a> )
+                <a class="btn btn-success" onclick="familiar('{{ word }}')" role="button">熟悉</a>
+                <a class="btn btn-warning" onclick="unfamiliar('{{ word }}')" role="button">不熟悉</a>
+                <a class="btn btn-danger" onclick="delete_word('{{ word }}')" role="button">删除</a>
             </p>
         {% endfor %}
         <input id="selected-words2" type="hidden" value="{{ words }}">
