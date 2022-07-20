@@ -116,21 +116,21 @@ You're logged in already!
 </style>
 
 <div class="container">
+
   <section class="signin-heading">
     <h1>Sign In</h1>
   </section>
 
   <form action="/login" method="POST">
-    
     <input type="text" placeholder="用户名" class="username" name="username" required>
-
     <input type="password" placeholder="密码" class="password"  name="password" required>
-
     <button type="submit" class="btn">登录</button>
-
   </form>
+
 </div>
-  <a href="/signup" class="signup">注册</a>
-  {% endif %}
-  {% endblock %}
+
+<a href="/signup" class="signup">注册</a>
+
+{% endif %}
+{% endblock %}
 
