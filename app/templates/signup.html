@@ -117,22 +117,20 @@ h1{
 
 </style>
 
-  <div class="container">
+<div class="container">
+
   <section class="signin-heading">
-      <h1>Sign Up</h1>
+    <h1>Sign Up</h1>
   </section>
 
-<form action="/signup" method="POST">
-  <p><input type="username" name="username" placeholder="输入用户名" required="required" class="username"></p>
+  <form action="/signup" method="POST">
+    <p><input type="username" name="username" placeholder="输入用户名" required="required" class="username"></p>
+    <p><input type="password" name="password" placeholder="输入密码" class="password"></p>
+    <p><input type="password" name="password2" placeholder="确认密码" class="password"></p>
+    <button type="submit" class="btn">注册</button>
+  </form>
 
-  <p><input type="password" name="password" placeholder="输入密码" class="password"></p>
-
-  <p><input type="password" name="password2" placeholder="确认密码" class="password"></p>
-
-  <button type="submit" class="btn">注册</button>
-
-</form>
-  </div>
+</div>
   
 {% endif %}
 {% endblock %}
