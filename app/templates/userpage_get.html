@@ -28,7 +28,13 @@
     </p>
     {{ flashed_messages|safe }}
 
-    <p><a class="btn btn-success" href="/{{ username }}/reset" role="button"> 下一篇 Next Article </a></p>
+    <a class="btn btn-success" href="/{{ username }}/reset" role="button"> 下一篇 Next Article </a>    
+    {% if session.get('articleID') != session.get('old_articleID') %}
+        {% if session.get('old_articleID') != None %}
+            <a class="btn btn-success" href="/{{ username }}/back" role="button"> 上一篇 Previous Article </a>
+        {% endif%}
+    {% endif %}
+
     <p><b>阅读文章并回答问题</b></p>
     <div id="text-content">{{ today_article|safe }}</div>
 

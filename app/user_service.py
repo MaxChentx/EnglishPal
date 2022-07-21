@@ -29,11 +29,24 @@ def user_reset(username):
     :param username: 用户名
     :return: 返回页面内容
     '''
+    session['old_articleID'] = session.get('articleID')
     if request.method == 'GET':
         session['articleID'] = None
         return redirect(url_for('user_bp.userpage', username=username))
     else:
         return 'Under construction'
+
+@userService.route("/<username>/back", methods=['GET'])
+def user_back(username):
+    '''
+    用户界面
+    :param username: 用户名
+    :return: 返回页面内容
+    '''
+    if request.method == 'GET':
+        session['articleID'] = session.get('old_articleID')
+        return redirect(url_for('user_bp.userpage', username=username))
+
 
 
 @userService.route("/<username>/<word>/unfamiliar", methods=['GET', 'POST'])
