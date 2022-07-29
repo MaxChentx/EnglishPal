@@ -115,7 +115,7 @@ def userpage(username):
     user_freq_record = path_prefix + 'static/frequency/' + 'frequency_%s.pickle' % (username)
 
     if request.method == 'POST':  # when we submit a form
-        content = request.form['content']
+        content = escape(request.form['content'])
         f = WordFreq(content)
         lst = f.get_freq()
         return render_template('userpage_post.html',username=username,lst = lst, yml=Yaml.yml)

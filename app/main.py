@@ -6,6 +6,7 @@
 # Written permission must be obtained from the author for commercial uses.
 ###########################################################################
 
+from flask import escape
 from Login import *
 from Article import *
 import Yaml
@@ -81,7 +82,7 @@ def mainpage():
     :return: 主界面
     '''
     if request.method == 'POST':  # when we submit a form
-        content = request.form['content']
+        content = escape(request.form['content'])
         f = WordFreq(content)
         lst = f.get_freq()
         # save history
