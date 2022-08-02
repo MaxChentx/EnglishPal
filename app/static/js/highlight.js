@@ -28,9 +28,9 @@ function highLight() {
     if (pickedWords != null) {
         const list = pickedWords.value.split(" ");
         for (let i = 0; i < list.length; ++i) {
-            list[i] = list[i].replace(/(^\s*)|(\s*$)/g, ""); //消除字符串两边空字符
+            list[i] = list[i].replace(/(^\s*)|(\s*$)/g, ""); //消除单词两边的空字符
             if (list[i] !== "" && "<mark>".indexOf(list[i]) === -1 && "</mark>".indexOf(list[i]) === -1) {
-                //将正则表达式进行修改 表示搜索的是两端带有空格的list[i] 那么搜索的便为一个完整单词  然后在mark标签的前后各加了一个空格对其进行替换
+		//将文章中所有出现该单词word的地方改为：" <mark>" + word + "<mark> "。 正则表达式RegExp()中，"\\s"代表单词前后必须要有空格，以防止只对单词中的部分字符高亮的情况出现。
                 articleContent = articleContent.replace(new RegExp("\\s"+list[i]+"\\s", "g"), " <mark>" + list[i] + "</mark> ");
             }
         }
@@ -40,7 +40,6 @@ function highLight() {
         for (let i = 0; i < list2.length; ++i) {
             list2[i] = list2[i].replace(/(^\s*)|(\s*$)/g, "");
             if (list2[i] !== "" && "<mark>".indexOf(list2[i]) === -1 && "</mark>".indexOf(list2[i]) === -1) {
-                //将正则表达式进行修改 表示搜索的是两端带有空格的list2[i] 那么搜索的便为一个完整单词  然后在mark标签的前后各加了一个空格对其进行替换
                 articleContent = articleContent.replace(new RegExp("\\s"+list2[i]+"\\s", "g"), " <mark>" + list2[i] + "</mark> ");
             }
         }
