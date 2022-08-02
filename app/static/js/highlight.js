@@ -71,14 +71,13 @@ function fillInWord2() {
     cancelHighlighting();
 }
 
-function ChangeHighlight() {
+function toggleHighlighting() {
     if (isHighlight) {
         isHighlight = false;
         cancelHighlighting();
     } else {
         isHighlight = true;
         highLight();
-
     }
 }
 
