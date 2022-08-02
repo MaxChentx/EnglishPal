@@ -1,7 +1,7 @@
 let isHighlight = true;
 
 function cancelBtnHandler() {
-    cancel_highLight();
+    cancelHighlighting();
     document.getElementById("text-content").removeEventListener("click", fillInWord, false);
     document.getElementById("text-content").removeEventListener("touchstart", fillInWord, false);
     document.getElementById("text-content").addEventListener("click", fillInWord2, false);
@@ -37,11 +37,11 @@ function highLight() {
     document.getElementById("article").innerHTML = articleContent;
 }
 
-function cancel_highLight() {
-    const list = pickedWords.value.split(" ");
+function cancelHighlighting() {
     let articleContent = document.getElementById("article").innerText;
     let pickedWords = document.getElementById("selected-words");
-    const dictionaryWords = document.getElementById("selected-words2");
+    const dictionaryWords = document.getElementById("selected-words2");    
+    const list = pickedWords.value.split(" ");    
     if (pickedWords != null) {
         for (let i = 0; i < list.length; ++i) {
             list[i] = list[i].replace(/(^\s*)|(\s*$)/g, "");
@@ -68,13 +68,13 @@ function fillInWord() {
 }
 
 function fillInWord2() {
-    cancel_highLight();
+    cancelHighlighting();
 }
 
 function ChangeHighlight() {
     if (isHighlight) {
         isHighlight = false;
-        cancel_highLight();
+        cancelHighlighting();
     } else {
         isHighlight = true;
         highLight();
