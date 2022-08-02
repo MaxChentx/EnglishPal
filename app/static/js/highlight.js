@@ -23,10 +23,10 @@ function getWord() {
 function highLight() {
     if (!isHighlight) return;
     let txt = document.getElementById("article").innerText;
-    let sel_word1 = document.getElementById("selected-words");
-    let sel_word2 = document.getElementById("selected-words2");
-    if (sel_word1 != null) {
-        const list = sel_word1.value.split(" ");
+    let picked_words = document.getElementById("selected-words");
+    let dictionary_words = document.getElementById("selected-words2");
+    if (picked_words != null) {
+        const list = picked_words.value.split(" ");
         for (let i = 0; i < list.length; ++i) {
             list[i] = list[i].replace(/(^\s*)|(\s*$)/g, ""); //消除字符串两边空字符
             if (list[i] !== "" && "<mark>".indexOf(list[i]) === -1 && "</mark>".indexOf(list[i]) === -1) {
@@ -35,8 +35,8 @@ function highLight() {
             }
         }
     }
-    if (sel_word2 != null) {
-        const list2 = sel_word2.value.split(" ");
+    if (dictionary_words != null) {
+        const list2 = dictionary_words.value.split(" ");
         for (let i = 0; i < list2.length; ++i) {
             list2[i] = list2[i].replace(/(^\s*)|(\s*$)/g, "");
             if (list2[i] !== "" && "<mark>".indexOf(list2[i]) === -1 && "</mark>".indexOf(list2[i]) === -1) {
@@ -49,11 +49,11 @@ function highLight() {
 }
 
 function cancel_highLight() {
-    const list = sel_word1.value.split(" ");
+    const list = picked_words.value.split(" ");
     let txt = document.getElementById("article").innerText;
-    let sel_word1 = document.getElementById("selected-words");
-    const sel_word2 = document.getElementById("selected-words2");
-    if (sel_word1 != null) {
+    let picked_words = document.getElementById("selected-words");
+    const dictionary_words = document.getElementById("selected-words2");
+    if (picked_words != null) {
         for (let i = 0; i < list.length; ++i) {
             list[i] = list[i].replace(/(^\s*)|(\s*$)/g, "");
             if (list[i] !== "") {
@@ -61,10 +61,10 @@ function cancel_highLight() {
             }
         }
     }
-    if (sel_word2 != null) {
-        let list2 = sel_word1.value.split(" ");
+    if (dictionary_words != null) {
+        let list2 = picked_words.value.split(" ");
         for (let i = 0; i < list2.length; ++i) {
-            list2 = sel_word2.value.split(" ");
+            list2 = dictionary_words.value.split(" ");
             list2[i] = list2[i].replace(/(^\s*)|(\s*$)/g, "");
             if (list2[i] !== "") {
                 txt = txt.replace("<mark>" + list[i] + "</mark>", "list[i]");
