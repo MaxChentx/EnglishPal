@@ -1,5 +1,6 @@
 from flask import *
 from Login import check_username_availability, verify_user, add_user, get_expiry_date, change_password
+import re
 
 # 初始化蓝图
 accountService = Blueprint("accountService", __name__)
@@ -19,6 +20,7 @@ def signup():
         # POST方法需判断是否注册成功，再根据结果返回不同的内容
         username = escape(request.form['username'])
         password = escape(request.form['password'])
+        
         #! 添加如下代码为了过滤注册时的非法字符
         if len(username) > 20:
             return '用户名过长'
