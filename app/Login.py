@@ -107,7 +107,7 @@ class WarningMessage:
 
     def __str__(self):
         result = UserName(self.s).validate()
-        if result != 'OK'
+        if result != 'OK':
             return result
 
         if self.s in ['signup', 'login', 'logout', 'reset', 'mark', 'back', 'unfamiliar', 'familiar', 'del']:
