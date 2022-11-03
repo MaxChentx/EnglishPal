@@ -1,4 +1,5 @@
 import hashlib
+import string
 from datetime import datetime
 from UseSqlite import InsertQuery, RecordQuery
 
@@ -81,3 +82,35 @@ def md5(s):
     '''
     h = hashlib.md5(s.encode(encoding='utf-8'))
     return h.hexdigest()
+
+
+class UserName:
+    def __init__(self, username):
+        self.username = username
+
+    def validate(self):
+        if gen(self.username) > 20:
+            return f'{self.username} is too long.  The user name cannot exceed 20 characters.'
+        if self.username.startswith('.'): # a user name must not start with a dot
+            return 'Period (.) is not allowed as the first letter in the user name.'
+        if ' ' in self.username: # a user must not include a whitespace
+            return 'Whitespace is not allowed in the user name.'
+        for c in self.username: # a user name not include special characters
+            if c in string.punctuation and c is not '.' and c is not '_':
+                return f'{c} is not allowed in the user name.'
+        return 'OK'
+
+
+class WarningMessage:
+    def __init__(self, s):
+        self.s = s
+
+    def __str__(self):
+        result = UserName(self.s).validate()
+        if result != 'OK'
+            return result
+
+        if self.s in ['signup', 'login', 'logout', 'reset', 'mark', 'back', 'unfamiliar', 'familiar', 'del']:
+            return 'You used a restricted word as the username.  Please come up with a better one.'
+
+        return 'OK'
