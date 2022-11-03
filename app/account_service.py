@@ -1,5 +1,6 @@
 from flask import *
 from Login import check_username_availability, verify_user, add_user, get_expiry_date, change_password
+import re
 
 # 初始化蓝图
 accountService = Blueprint("accountService", __name__)
@@ -19,7 +20,20 @@ def signup():
         # POST方法需判断是否注册成功，再根据结果返回不同的内容
         username = escape(request.form['username'])
         password = escape(request.form['password'])
-
+        
+        #! 添加如下代码为了过滤注册时的非法字符
+        if len(username) > 20:
+            return '用户名过长'
+        # 正则匹配非法字符
+        check_useful = re.search(u'^[_a-zA-Z0-9\u4e00-\u9fa5]+$', username)
+        if not check_useful:
+            return '存在非法字符'
+        # 判断用户名是否和接口重名
+        if username in ["signup", "login", "logout", 
+                        "reset", "mark", "back", 
+                        "unfamiliar", "familiar", 'del']:
+            return '请勿与接口同名'
+        
         available = check_username_availability(username)
         if not available: # 用户名不可用
             flash('用户名 %s 已经被注册。' % (username))
