@@ -1,6 +1,5 @@
 from flask import *
 from Login import check_username_availability, verify_user, add_user, get_expiry_date, change_password, UserName, WarningMessage
-import re
 
 # 初始化蓝图
 accountService = Blueprint("accountService", __name__)
