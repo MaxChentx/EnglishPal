@@ -89,7 +89,7 @@ class UserName:
         self.username = username
 
     def validate(self):
-        if gen(self.username) > 20:
+        if len(self.username) > 20:
             return f'{self.username} is too long.  The user name cannot exceed 20 characters.'
         if self.username.startswith('.'): # a user name must not start with a dot
             return 'Period (.) is not allowed as the first letter in the user name.'
