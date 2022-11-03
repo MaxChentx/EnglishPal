@@ -93,9 +93,9 @@ class UserName:
             return f'{self.username} is too long.  The user name cannot exceed 20 characters.'
         if self.username.startswith('.'): # a user name must not start with a dot
             return 'Period (.) is not allowed as the first letter in the user name.'
-        if ' ' in self.username: # a user must not include a whitespace
+        if ' ' in self.username: # a user name must not include a whitespace
             return 'Whitespace is not allowed in the user name.'
-        for c in self.username: # a user name not include special characters
+        for c in self.username: # a user name must not include special characters, except non-leading periods or underscores
             if c in string.punctuation and c is not '.' and c is not '_':
                 return f'{c} is not allowed in the user name.'
         return 'OK'
@@ -111,6 +111,6 @@ class WarningMessage:
             return result
 
         if self.s in ['signup', 'login', 'logout', 'reset', 'mark', 'back', 'unfamiliar', 'familiar', 'del']:
-            return 'You used a restricted word as the username.  Please come up with a better one.'
+            return 'You used a restricted word as the user name.  Please come up with a better one.'
 
         return 'OK'
