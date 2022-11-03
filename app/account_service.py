@@ -23,7 +23,7 @@ def signup():
         
         #! 添加如下代码为了过滤注册时的非法字符
         warn = WarningMessage(username)
-        if warn != 'OK':
+        if str(warn) != 'OK':
             return str(warn)
         
         available = check_username_availability(username)
