@@ -98,6 +98,9 @@ class UserName:
         for c in self.username: # a user name must not include special characters, except non-leading periods or underscores
             if c in string.punctuation and c is not '.' and c is not '_':
                 return f'{c} is not allowed in the user name.'
+        if self.username in ['signup', 'login', 'logout', 'reset', 'mark', 'back', 'unfamiliar', 'familiar', 'del']:
+            return 'You used a restricted word as your user name.  Please come up with a better one.'
+
         return 'OK'
 
 
@@ -106,11 +109,5 @@ class WarningMessage:
         self.s = s
 
     def __str__(self):
-        result = UserName(self.s).validate()
-        if result != 'OK':
-            return result
+        return UserName(self.s).validate()
 
-        if self.s in ['signup', 'login', 'logout', 'reset', 'mark', 'back', 'unfamiliar', 'familiar', 'del']:
-            return 'You used a restricted word as the user name.  Please come up with a better one.'
-
-        return 'OK'
