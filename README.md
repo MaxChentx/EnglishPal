@@ -181,4 +181,14 @@ Demo video link: https://b23.tv/QuB77m
 Bug report: http://118.25.96.118/bugzilla/show_bug.cgi?id=215
 
 
+
+### 丁锐
+
+修复了以下漏洞
+
+漏洞：新用户在创建账号时，不需要输入确定密码也可以注册成功，并且新账户可以正常使用。
+
+Bug report:http://118.25.96.118/bugzilla/show_bug.cgi?id=489
+
+
 *Last modified on 2021-10-17*
