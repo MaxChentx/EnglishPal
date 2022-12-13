@@ -112,6 +112,13 @@ def reset():
         # POST请求用于提交修改后信息
         old_password = escape(request.form['old-password'])
         new_password = escape(request.form['new-password'])
+
+        re_new_password = escape(request.form['re-new-password'])  # 确认新密码
+        if re_new_password != new_password: #验证新密码两次输入是否相同
+            return '新密码不匹配，请重新输入'
+        if len(new_password) < 4: #验证新密码长度，原则参照注册模块
+            return '密码过于简单。(密码长度至少4位)'
+
         flag = change_password(username, old_password, new_password) # flag表示是否修改成功
         if flag:
             session['logged_in'] = False
