@@ -29,6 +29,8 @@ function highLight() {
     const list = allWords.split(" ");
     for (let i = 0; i < list.length; ++i) {
         list[i] = list[i].replace(/(^\s*)|(\s*$)/g, ""); //消除单词两边的空字符
+        list[i] = list[i].replace('|', "");
+        list[i] = list[i].replace('?', "");
         if (list[i] !== "" && "<mark>".indexOf(list[i]) === -1 && "</mark>".indexOf(list[i]) === -1) {
 	    //将文章中所有出现该单词word的地方改为：" <mark>" + word + "<mark> "。 正则表达式RegExp()中，"\\s"代表单词前后必须要有空格，以防止只对单词中的部分字符高亮的情况出现。
             articleContent = articleContent.replace(new RegExp("\\s"+list[i]+"\\s", "g"), " <mark>" + list[i] + "</mark> ");
