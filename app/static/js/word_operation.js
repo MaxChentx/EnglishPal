@@ -47,7 +47,7 @@ function unfamiliar(theWord) {
 
 function delete_word(theWord) {
     let username = $("#username").text();
-    let word = $("#word_" + theWord).text();
+    let word = theWord.replace('&amp;', '&');
     $.ajax({
         type:"GET",
         url:"/" + username + "/" + word + "/del",
@@ -104,6 +104,7 @@ function wordTemplate(word) {
  */
 function removeWord(word) {
     // 根据词频信息删除元素
+    word = word.replace('&amp;', '&');
     const element_to_remove = document.getElementById(`p_${word}`);
     if (element_to_remove != null) {
         element_to_remove.remove();
