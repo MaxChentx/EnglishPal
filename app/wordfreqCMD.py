@@ -17,6 +17,10 @@ def freq(fruit):
     注意事项： 首先要把字符串转成小写。原因是。。。
     '''
 
+    '''
+        在apples和apple两个单词识别为同一单词的合适时期应该就是在对选入单词进行预操作
+        的这里，最迟是在进行难度的评级时，单词转小写的同时将同一单词的不同形式转换为同一单词的词根形式，
+    '''
     result = []
     
     fruit = fruit.lower() # 字母转小写
@@ -65,7 +69,7 @@ def sort_in_descending_order(lst):# 单词按频率降序排列
     return lst2
 
 
-def sort_in_ascending_order(lst):# 单词按频率降序排列
+def sort_in_ascending_order(lst):# 单词按频率升序排列
     lst2 = sorted(lst, reverse=False, key=lambda x: (x[1], x[0]))
     return lst2
 
